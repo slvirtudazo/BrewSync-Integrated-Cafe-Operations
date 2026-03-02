@@ -46,7 +46,7 @@
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
-            height: 6px; /* Added for horizontal tables */
+            height: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background-color: rgba(91, 19, 18, 0.2);
@@ -100,6 +100,18 @@
                     <span class="font-medium">Insights</span>
                 </a>
             </nav>
+
+            <!-- Enhancement: Critical Stock Alert Widget -->
+            <div class="p-6 mt-auto border-t border-white/5">
+                <div class="bg-red-500/10 rounded-2xl p-4 border border-red-500/20">
+                    <div class="flex items-center gap-2 mb-2 text-red-500">
+                        <span class="material-symbols-outlined text-sm">inventory_2</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Stock Pulse</span>
+                    </div>
+                    <p class="text-xs font-bold text-stone-200">3 Critical Alerts:</p>
+                    <p class="text-[10px] text-stone-400 mt-1 truncate">Whole Milk, Caramel, Oat...</p>
+                </div>
+            </div>
         </aside>
 
         <main class="flex-1 flex flex-col overflow-hidden">
@@ -363,55 +375,4 @@
                         </div>
                         <div class="p-4 bg-stone-50 border-t border-stone-100 text-center">
                             <button class="text-xs font-bold text-primary hover:underline">View Historical
-                                Deductions</button>
-                        </div>
-                    </div>
-
-                    <div
-                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
-                        <h4 class="text-lg font-bold text-sidebar-dark mb-4">Waste Insights</h4>
-                        <div class="space-y-6">
-                            <div class="p-4 bg-red-50 rounded border border-red-100">
-                                <p class="text-[10px] font-bold text-waste-red uppercase mb-1">Top Waste Factor</p>
-                                <p class="text-sm font-bold text-sidebar-dark italic">"Milk over-steaming in morning
-                                    shift"</p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <span class="text-xs text-stone-500">Loss: ₱1,240 /wk</span>
-                                    <span class="text-xs font-bold text-waste-red">+12% vs last week</span>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <p class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Efficiency
-                                    Ranking</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="size-8 rounded-full bg-sidebar-dark text-white text-[10px] flex items-center justify-center font-bold">
-                                            UM</div>
-                                        <span class="text-sm font-medium">Main Branch</span>
-                                    </div>
-                                    <span class="text-sm font-bold text-green-600">94%</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="size-8 rounded-full bg-stone-200 text-stone-600 text-[10px] flex items-center justify-center font-bold">
-                                            UM</div>
-                                        <span class="text-sm font-medium">Annex Kiosk</span>
-                                    </div>
-                                    <span class="text-sm font-bold text-amber-500">81%</span>
-                                </div>
-                            </div>
-                            <button
-                                class="w-full py-3 border-2 border-dashed border-stone-200 rounded text-stone-400 text-sm font-bold hover:border-primary hover:text-primary transition-all">
-                                + Log Manual Waste
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</body>
-
-</html>
+                                Deduct
