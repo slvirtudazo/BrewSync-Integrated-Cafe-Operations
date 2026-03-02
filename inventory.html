@@ -19,7 +19,7 @@
                     colors: {
                         "primary": "#5B1312",
                         "sidebar-dark": "#2A0000",
-                        "background-light": "#F5F1E8",
+                        "background-light": "#F9F8F6",
                         "background-dark": "#201212",
                         "accent-burgundy": "#5B1312",
                         "waste-red": "#8B0000",
@@ -46,6 +46,7 @@
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
+            height: 6px; /* Added for horizontal tables */
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background-color: rgba(91, 19, 18, 0.2);
@@ -103,12 +104,13 @@
 
         <main class="flex-1 flex flex-col overflow-hidden">
             <header
-                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10">
+                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10 shadow-sm">
                 <div class="flex items-center gap-4">
                     <h2 class="text-2xl font-bold text-sidebar-dark">Inventory & Waste</h2>
                     <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
                     <div class="flex items-center gap-2">
-                        <span class="text-sm font-bold text-stone-600">Integrated Cafe Operations</span>
+                        <span class="text-sm font-bold text-stone-600">Automated Stock Tracking & Waste
+                            Prevention</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
@@ -137,7 +139,7 @@
                             <div
                                 class="size-11 rounded-full border-2 border-primary/20 p-0.5 shadow-sm overflow-hidden">
                                 <img alt="Jane Doe Profile" class="w-full h-full rounded-full object-cover"
-                                    src="profile_manager.jpg" />
+                                    src="https://i.pinimg.com/736x/e9/f0/b5/e9f0b5cbe3f403b0cc3b9a70ce0993f1.jpg" />
                             </div>
                         </div>
                     </div>
@@ -146,7 +148,8 @@
 
             <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-red-50 border border-red-100 p-6 rounded flex items-center gap-4">
+                    <div
+                        class="bg-red-50 border border-red-100 p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center gap-4">
                         <div class="size-14 rounded bg-waste-red text-white flex items-center justify-center shadow-md">
                             <span class="material-symbols-outlined text-3xl">warning</span>
                         </div>
@@ -157,7 +160,8 @@
                         <button class="ml-auto bg-waste-red text-white px-4 py-2 rounded text-sm font-bold">Refill
                             Now</button>
                     </div>
-                    <div class="bg-primary/5 border border-primary/10 p-6 rounded flex items-center gap-4">
+                    <div
+                        class="bg-primary/5 border border-primary/10 p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center gap-4">
                         <div class="size-14 rounded bg-primary text-white flex items-center justify-center shadow-md">
                             <span class="material-symbols-outlined text-3xl">event_busy</span>
                         </div>
@@ -170,7 +174,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded shadow-md border border-stone-200 overflow-hidden mb-8">
+                <div
+                    class="bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 overflow-hidden mb-8">
                     <div class="p-6 border-b border-stone-100 flex items-center justify-between">
                         <div>
                             <h3 class="text-xl font-bold text-sidebar-dark uppercase tracking-tight">Ingredient &
@@ -275,7 +280,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white rounded shadow-md border border-stone-200 overflow-hidden">
+                    <div
+                        class="lg:col-span-2 bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 overflow-hidden">
                         <div class="px-6 py-5 border-b border-stone-100 flex items-center justify-between">
                             <h4 class="text-lg font-bold text-sidebar-dark">Automated Deduction Log</h4>
                             <span class="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-full">LIVE
@@ -361,7 +367,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded shadow-md border border-stone-200">
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <h4 class="text-lg font-bold text-sidebar-dark mb-4">Waste Insights</h4>
                         <div class="space-y-6">
                             <div class="p-4 bg-red-50 rounded border border-red-100">

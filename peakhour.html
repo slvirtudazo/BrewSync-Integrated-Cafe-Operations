@@ -19,7 +19,7 @@
                     colors: {
                         "primary": "#5B1312",
                         "sidebar-dark": "#2A0000",
-                        "background-light": "#F5F1E8",
+                        "background-light": "#F9F8F6",
                         "background-dark": "#201212",
                         "botanical-leaf": "#4A5D4E",
                     },
@@ -39,24 +39,31 @@
     </script>
     <style type="text/tailwindcss">
         @layer base {
-            body {
-                @apply font-display text-slate-900 bg-background-light dark:bg-background-dark antialiased;
-            }
+        body {
+            @apply font-display text-slate-900 bg-background-light dark:bg-background-dark antialiased;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: rgba(91, 19, 18, 0.2);
-            border-radius: 10px;
-        }
-        .glass-panel {
-            @apply bg-white/70 backdrop-blur-md border border-stone-200/60 shadow-sm;
-        }
-        .heat-cell {
-            @apply w-full h-8 rounded-sm;
-        }
-    </style>
+    }
+    /* Updated Scrollbar: Matches the grey horizontal bar in image_fd10d5.png */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px; 
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(91, 19, 18, 0.2);
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(91, 19, 18, 0.4);
+    }
+
+    /* Updated to Dashboard Container Style */
+    .glass-panel {
+        @apply bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100;
+    }
+    .heat-cell {
+        @apply w-full h-8 rounded-sm transition-all hover:scale-105 cursor-pointer;
+    }
+</style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark">
@@ -118,12 +125,12 @@
 
         <main class="flex-1 flex flex-col overflow-hidden">
             <header
-                class="h-20 bg-white/60 backdrop-blur-md border-b border-stone-200 px-8 flex items-center justify-between z-10">
+                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10 shadow-sm">
                 <div class="flex items-center gap-4">
                     <h2 class="text-2xl font-bold text-sidebar-dark">Peak-Hour Live</h2>
                     <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
                     <div class="flex items-center gap-2">
-                        <span class="text-sm font-bold text-stone-600">Integrated Cafe Operations</span>
+                        <span class="text-sm font-bold text-stone-600">Live Queue Management & Digital Ordering</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
@@ -164,7 +171,7 @@
                         </div>
                         <div class="size-10 rounded-full border-2 border-primary/20 p-0.5 shadow-sm overflow-hidden">
                             <img alt="Jane Doe Profile" class="w-full h-full rounded-full object-cover"
-                                src="profile_manager.jpg" />
+                                src="https://i.pinimg.com/736x/e9/f0/b5/e9f0b5cbe3f403b0cc3b9a70ce0993f1.jpg" />
                         </div>
                     </div>
                 </div>
@@ -184,9 +191,9 @@
                                     5s</span>
                             </div>
                         </div>
-                        <div class="grid grid-cols-3 gap-4 h-[600px]">
+                        <div class="grid grid-cols-3 gap-4 h-[600px] overflow-x-auto custom-scrollbar">
                             <div
-                                class="bg-stone-100/50 rounded border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                class="bg-white rounded border border-stone-100 shadow-sm p-4 flex flex-col overflow-hidden">
                                 <div class="flex items-center justify-between mb-4 px-2">
                                     <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Pending
                                         (4)</span>
@@ -226,15 +233,14 @@
                                 </div>
                             </div>
                             <div
-                                class="bg-stone-100/50 rounded border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                class="bg-white rounded border border-stone-100 shadow-sm p-4 flex flex-col overflow-hidden">
                                 <div class="flex items-center justify-between mb-4 px-2">
                                     <span class="text-xs font-bold uppercase tracking-widest text-stone-500">In-Progress
                                         (2)</span>
                                     <span class="size-2 rounded-full bg-blue-400"></span>
                                 </div>
                                 <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
-                                    <div
-                                        class="glass-panel p-4 rounded border-l-4 border-blue-400 ring-1 ring-primary/10">
+                                    <div class="glass-panel p-4 rounded border-l-4 border-blue-400">
                                         <div class="flex justify-between items-start mb-2">
                                             <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2928</h4>
                                             <span class="text-[10px] font-bold text-blue-600 flex items-center gap-1">
@@ -243,13 +249,14 @@
                                                 4:12
                                             </span>
                                         </div>
-                                        <p class="text-xs text-stone-600 mb-3 font-medium text-primary italic">Barista:
-                                            Mark</p>
+                                        <p class="text-xs text-stone-600 mb-1 font-medium italic">Barista: Mark</p>
                                         <p class="text-xs text-stone-600 mb-3">3x Cappuccino (Large)</p>
                                         <button
-                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded shadow-sm">MARK
-                                            AS READY</button>
+                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded shadow-sm hover:bg-primary/90 transition-all">
+                                            MARK AS READY
+                                        </button>
                                     </div>
+
                                     <div class="glass-panel p-4 rounded border-l-4 border-blue-400">
                                         <div class="flex justify-between items-start mb-2">
                                             <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2929</h4>
@@ -259,34 +266,38 @@
                                                 2:45
                                             </span>
                                         </div>
-                                        <p class="text-xs text-stone-600 mb-3 font-medium text-primary italic">Barista:
-                                            Ana</p>
+                                        <p class="text-xs text-stone-600 mb-1 font-medium italic">Barista: Ana</p>
                                         <p class="text-xs text-stone-600 mb-3">1x Dark Mocha Frappe</p>
                                         <button
-                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded shadow-sm">MARK
-                                            AS READY</button>
+                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded shadow-sm hover:bg-primary/90 transition-all">
+                                            MARK AS READY
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div
-                                class="bg-stone-100/50 rounded border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                class="bg-white rounded border border-stone-100 shadow-sm p-4 flex flex-col overflow-hidden">
                                 <div class="flex items-center justify-between mb-4 px-2">
                                     <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Ready
                                         (3)</span>
                                     <span class="size-2 rounded-full bg-green-400"></span>
                                 </div>
                                 <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
-                                    <div class="glass-panel p-4 rounded border-l-4 border-green-400 bg-green-50/30">
+                                    <div class="glass-panel p-4 rounded border-l-4 border-green-400">
                                         <div class="flex justify-between items-start mb-2">
                                             <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2925</h4>
                                             <span
-                                                class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded-full">PICKUP</span>
+                                                class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded-full uppercase tracking-tighter">Ready
+                                                for Pickup</span>
                                         </div>
-                                        <p class="text-xs text-stone-600 mb-3 font-bold">Customer: Juan D.</p>
+                                        <p class="text-xs text-stone-600 mb-1 font-bold">Customer: Juan D.</p>
+                                        <p class="text-[10px] text-stone-400 mb-3">2x Spanish Latte (Hot)</p>
                                         <button
-                                            class="w-full py-2 bg-sidebar-dark text-white text-[10px] font-bold rounded">COMPLETE
-                                            TRANSACTION</button>
+                                            class="w-full py-2 bg-sidebar-dark text-white text-[10px] font-bold rounded shadow-sm hover:bg-sidebar-dark/90 transition-all">
+                                            COMPLETE TRANSACTION
+                                        </button>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

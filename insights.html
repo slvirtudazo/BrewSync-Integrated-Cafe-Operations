@@ -19,7 +19,7 @@
                     colors: {
                         "primary": "#5B1312",
                         "sidebar-dark": "#2A0000",
-                        "background-light": "#F5F1E8",
+                        "background-light": "#F9F8F6",
                         "background-dark": "#201212",
                         "accent-burgundy": "#5B1312",
                         "neutral-coffee": "#8B7E74",
@@ -115,12 +115,12 @@
 
         <main class="flex-1 flex flex-col overflow-hidden">
             <header
-                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10">
+                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10 shadow-sm">
                 <div class="flex items-center gap-4">
                     <h2 class="text-2xl font-bold text-sidebar-dark">Customer Behavior Analytics</h2>
                     <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
                     <div class="flex items-center gap-2">
-                        <span class="text-sm font-bold text-stone-600">Integrated Cafe Operations</span>
+                        <span class="text-sm font-bold text-stone-600">Data-Driven Trends & Behavior Analysis</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
@@ -149,7 +149,7 @@
                             <div
                                 class="size-11 rounded-full border-2 border-primary/20 p-0.5 shadow-sm overflow-hidden">
                                 <img alt="Jane Doe Profile" class="w-full h-full rounded-full object-cover"
-                                    src="profile_manager.jpg" />
+                                    src="https://i.pinimg.com/736x/e9/f0/b5/e9f0b5cbe3f403b0cc3b9a70ce0993f1.jpg" />
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,8 @@
             </header>
 
             <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
-                <div class="bg-white p-8 rounded shadow-md border border-stone-100 mb-8">
+                <div
+                    class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 mb-8">
                     <div class="flex items-center justify-between mb-8">
                         <div>
                             <h3 class="text-xl font-bold text-sidebar-dark">Peak Hour Heatmap: Student Activity</h3>
@@ -248,7 +249,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded shadow-md border border-stone-100">
+                    <div
+                        class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <div class="flex items-center justify-between mb-8">
                             <div>
                                 <h4 class="text-lg font-bold text-sidebar-dark">Most Popular Pairings</h4>
@@ -303,7 +305,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded shadow-md border border-stone-100">
+                    <div
+                        class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <div class="flex items-center justify-between mb-8">
                             <div>
                                 <h4 class="text-lg font-bold text-sidebar-dark">Loyalty Retention Trend</h4>
@@ -315,7 +318,7 @@
                                 +12%
                             </div>
                         </div>
-                        <div class="h-56 w-full relative">
+                        <div class="min-h-[14rem] w-full relative">
                             <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 300">
                                 <defs>
                                     <linearGradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
@@ -337,7 +340,7 @@
                                 <line stroke="#f1f1f1" stroke-width="1" x1="0" x2="1000" y1="200" y2="200"></line>
                             </svg>
                             <div
-                                class="flex justify-between mt-6 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
+                                class="flex justify-between mt-6 pb-2 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
                                 <span>AUG</span>
                                 <span>SEP</span>
                                 <span>OCT</span>
@@ -349,7 +352,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                    <div class="bg-primary p-6 rounded shadow-xl text-white">
+                    <div class="bg-primary p-6 rounded shadow-2xl text-white">
                         <span class="material-symbols-outlined text-4xl mb-4">tips_and_updates</span>
                         <h5 class="text-lg font-bold mb-2">Operational Tip</h5>
                         <p class="text-white/80 text-sm mb-4">Increase staff count during 12:00 PM - 1:30 PM (UM Lunch
@@ -358,7 +361,8 @@
                             class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-xs font-bold transition-all">Schedule
                             Adjustment</button>
                     </div>
-                    <div class="bg-white p-6 rounded shadow-md border border-stone-100">
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <div class="size-12 rounded bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
                             <span class="material-symbols-outlined">campaign</span>
                         </div>
@@ -368,7 +372,8 @@
                         <button class="text-primary font-bold text-xs hover:underline flex items-center gap-1">Launch
                             Campaign <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
                     </div>
-                    <div class="bg-white p-6 rounded shadow-md border border-stone-100">
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <div class="size-12 rounded bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                             <span class="material-symbols-outlined">loyalty</span>
                         </div>

@@ -19,7 +19,7 @@
                     colors: {
                         "primary": "#5B1312",
                         "sidebar-dark": "#2A0000",
-                        "background-light": "#F5F1E8",
+                        "background-light": "#F9F8F6",
                         "background-dark": "#201212",
                     },
                     fontFamily: {
@@ -108,12 +108,12 @@
 
         <main class="flex-1 flex flex-col overflow-hidden">
             <header
-                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10">
+                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10 shadow-sm">
                 <div class="flex items-center gap-4">
                     <h2 class="text-2xl font-bold text-sidebar-dark">Financial Management</h2>
                     <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
                     <div class="flex items-center gap-2">
-                        <span class="text-sm font-bold text-stone-600">Integrated Cafe Operations</span>
+                        <span class="text-sm font-bold text-stone-600">Cash Flow & Profit Margin Monitoring</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
@@ -142,7 +142,7 @@
                             <div
                                 class="size-11 rounded-full border-2 border-primary/20 p-0.5 shadow-sm overflow-hidden">
                                 <img alt="Jane Doe Profile" class="w-full h-full rounded-full object-cover"
-                                    src="profile_manager.jpg" />
+                                    src="https://i.pinimg.com/736x/e9/f0/b5/e9f0b5cbe3f403b0cc3b9a70ce0993f1.jpg" />
                             </div>
                         </div>
                     </div>
@@ -150,20 +150,39 @@
             </header>
 
             <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+
+                <!-- Enhancement 2: Proactive Alert Banner -->
+                <div class="mb-8">
+                    <div
+                        class="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded flex items-center gap-4 shadow-sm animate-pulse">
+                        <span class="material-symbols-outlined text-red-600">warning</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-sm">Action Required: Budget Overrun Detected</p>
+                            <p class="text-xs opacity-90">'Staff Salaries' has exceeded the projected budget by 12%.
+                                Projected cash flow dips below zero on Day 24.</p>
+                        </div>
+                        <button
+                            class="text-xs font-bold uppercase tracking-wider hover:underline px-4 py-2 bg-red-100 rounded-md">Review
+                            Details</button>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-8 rounded shadow-md border-b-4 border-primary">
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
-                            <p class="text-stone-500 font-bold text-sm uppercase tracking-wider">Total Revenue</p>
+                            <p class="text-stone-500 font-bold text-xs uppercase tracking-wider">Total Revenue</p>
                             <span
                                 class="material-symbols-outlined text-green-600 bg-green-50 p-2 rounded-lg">trending_up</span>
                         </div>
-                        <h3 class="text-4xl font-bold text-sidebar-dark">₱125,450.00</h3>
+                        <h3 class="text-3xl font-bold text-sidebar-dark">₱125,450.00</h3>
                         <div class="mt-4 flex items-center gap-2">
                             <span class="text-green-600 text-sm font-bold">+12.5%</span>
                             <span class="text-stone-400 text-xs">from last month</span>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded shadow-md border-b-4 border-stone-400">
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
                             <p class="text-stone-500 font-bold text-sm uppercase tracking-wider">Operating Expenses
                             </p>
@@ -176,22 +195,39 @@
                             <span class="text-stone-400 text-xs">vs. budget projection</span>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded shadow-md border-b-4 border-primary">
+
+                    <!-- Enhancement 3: Explicit Profit Margin Tracking -->
+                    <div
+                        class="bg-white p-6 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col">
                         <div class="flex items-center justify-between mb-4">
                             <p class="text-stone-500 font-bold text-sm uppercase tracking-wider">Net Profit</p>
-                            <span
-                                class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">account_balance_wallet</span>
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-full border border-green-200">HEALTHY
+                                    MARGIN</span>
+                                <span
+                                    class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">account_balance_wallet</span>
+                            </div>
                         </div>
                         <h3 class="text-4xl font-bold text-sidebar-dark">₱80,250.00</h3>
-                        <div class="mt-4 flex items-center gap-2">
-                            <span class="text-primary text-sm font-bold">+8.4%</span>
-                            <span class="text-stone-400 text-xs">net margin increase</span>
+                        <div class="mt-4 grid grid-cols-2 gap-4 border-t border-stone-100 pt-4">
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-stone-400 tracking-tight">Gross Margin
+                                </p>
+                                <p class="text-lg font-bold text-sidebar-dark">65%</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-stone-400 tracking-tight">Net Margin</p>
+                                <p class="text-lg font-bold text-green-600">22% <span
+                                        class="text-xs font-normal text-stone-400 ml-1">▲ 8%</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white p-8 rounded shadow-md border border-stone-100">
+                    <div
+                        class="lg:col-span-2 bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100">
                         <div class="flex items-center justify-between mb-8">
                             <div>
                                 <h4 class="text-xl font-bold text-sidebar-dark">Projected vs. Actual Cash Flow</h4>
@@ -238,60 +274,85 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded shadow-md border border-stone-100 flex flex-col items-center">
-                        <h4 class="text-xl font-bold text-sidebar-dark self-start mb-8">Expense Categories</h4>
-                        <div class="relative w-48 h-48 mb-8">
-                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                                <circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#f1f1f1" stroke-width="3.8">
-                                </circle>
-                                <circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#5B1312"
-                                    stroke-dasharray="45 100" stroke-dashoffset="0" stroke-width="3.8"></circle>
-                                <circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#2A0000"
-                                    stroke-dasharray="25 100" stroke-dashoffset="-45" stroke-width="3.8"></circle>
-                                <circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#92400e"
-                                    stroke-dasharray="20 100" stroke-dashoffset="-70" stroke-width="3.8"></circle>
-                                <circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#d97706"
-                                    stroke-dasharray="10 100" stroke-dashoffset="-90" stroke-width="3.8"></circle>
-                            </svg>
-                            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                <span class="text-3xl font-bold text-sidebar-dark">45%</span>
-                                <span class="text-[10px] uppercase font-bold text-stone-500">Supplies</span>
+                    <div
+                        class="bg-white p-8 rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col items-center">
+                        <h4 class="text-xl font-bold text-sidebar-dark self-start mb-6">Expense Categories</h4>
+
+                        <!-- Enhancement 1: Visual Budget Utilization (Progress Bars) -->
+                        <div class="w-full space-y-6">
+                            <!-- Category: Red (Overspend) -->
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs font-bold">
+                                    <span class="text-stone-600 uppercase tracking-wider">Staff Salaries</span>
+                                    <span class="text-red-600">112% OF BUDGET</span>
+                                </div>
+                                <div class="h-3 w-full bg-stone-100 rounded-full overflow-hidden shadow-inner">
+                                    <div class="h-full bg-red-500 rounded-full transition-all duration-1000"
+                                        style="width: 100%"></div>
+                                </div>
+                                <div class="flex justify-between items-center px-1">
+                                    <span class="text-[10px] text-stone-400 font-medium">Actual: ₱11,300</span>
+                                    <span class="text-[10px] text-red-500 font-bold">Over: ₱1,300</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Amber (High Utilization) -->
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs font-bold">
+                                    <span class="text-stone-600 uppercase tracking-wider">Coffee Supplies</span>
+                                    <span class="text-amber-600">86% OF BUDGET</span>
+                                </div>
+                                <div class="h-3 w-full bg-stone-100 rounded-full overflow-hidden shadow-inner">
+                                    <div class="h-full bg-amber-500 rounded-full transition-all duration-1000"
+                                        style="width: 86%"></div>
+                                </div>
+                                <div class="flex justify-between items-center px-1">
+                                    <span class="text-[10px] text-stone-400 font-medium">Actual: ₱20,340</span>
+                                    <span class="text-[10px] text-stone-400 font-medium">Budget: ₱23,650</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Green (Healthy) -->
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs font-bold">
+                                    <span class="text-stone-600 uppercase tracking-wider">Monthly Rent</span>
+                                    <span class="text-green-600">50% OF BUDGET</span>
+                                </div>
+                                <div class="h-3 w-full bg-stone-100 rounded-full overflow-hidden shadow-inner">
+                                    <div class="h-full bg-green-500 rounded-full transition-all duration-1000"
+                                        style="width: 50%"></div>
+                                </div>
+                                <div class="flex justify-between items-center px-1">
+                                    <span class="text-[10px] text-stone-400 font-medium">Actual: ₱9,040</span>
+                                    <span class="text-[10px] text-stone-400 font-medium">Fixed Cost</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Green (Healthy) -->
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs font-bold">
+                                    <span class="text-stone-600 uppercase tracking-wider">Utilities</span>
+                                    <span class="text-green-600">42% OF BUDGET</span>
+                                </div>
+                                <div class="h-3 w-full bg-stone-100 rounded-full overflow-hidden shadow-inner">
+                                    <div class="h-full bg-green-500 rounded-full transition-all duration-1000"
+                                        style="width: 42%"></div>
+                                </div>
+                                <div class="flex justify-between items-center px-1">
+                                    <span class="text-[10px] text-stone-400 font-medium">Actual: ₱4,520</span>
+                                    <span class="text-[10px] text-stone-400 font-medium">Est. Variance</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="w-full space-y-3">
-                            <div class="flex items-center justify-between text-sm">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-primary"></span>
-                                    <span class="font-bold text-stone-600">Coffee Supplies</span>
-                                </div>
-                                <span class="font-bold text-sidebar-dark">₱20,340</span>
-                            </div>
-                            <div class="flex items-center justify-between text-sm">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-sidebar-dark"></span>
-                                    <span class="font-bold text-stone-600">Staff Salaries</span>
-                                </div>
-                                <span class="font-bold text-sidebar-dark">₱11,300</span>
-                            </div>
-                            <div class="flex items-center justify-between text-sm">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-amber-800"></span>
-                                    <span class="font-bold text-stone-600">Monthly Rent</span>
-                                </div>
-                                <span class="font-bold text-sidebar-dark">₱9,040</span>
-                            </div>
-                            <div class="flex items-center justify-between text-sm">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-amber-600"></span>
-                                    <span class="font-bold text-stone-600">Utilities</span>
-                                </div>
-                                <span class="font-bold text-sidebar-dark">₱4,520</span>
-                            </div>
+
+                        <div class="mt-8 pt-6 border-t border-stone-100 w-full text-center">
+                            <p class="text-xs text-stone-500">Last updated today at 08:30 AM</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 bg-white rounded shadow-md border border-stone-100 overflow-hidden">
+                <div
+                    class="mt-8 bg-white rounded shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 overflow-hidden">
                     <div class="px-8 py-6 border-b border-stone-100 flex items-center justify-between">
                         <h4 class="text-xl font-bold text-sidebar-dark">Recent Transactions</h4>
                         <button class="text-primary font-bold text-sm hover:underline">Download CSV</button>
