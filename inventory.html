@@ -7,10 +7,9 @@
     <title>BrewSync - Inventory Management</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
@@ -20,7 +19,7 @@
                     colors: {
                         "primary": "#5B1312",
                         "sidebar-dark": "#2A0000",
-                        "background-light": "#f8f6f6",
+                        "background-light": "#F5F1E8",
                         "background-dark": "#201212",
                         "accent-burgundy": "#5B1312",
                         "waste-red": "#8B0000",
@@ -30,7 +29,7 @@
                         "logo": ["Oleo Script", "cursive"]
                     },
                     borderRadius: {
-                        "DEFAULT": "1rem",
+                        "DEFAULT": "1.25rem",
                         "lg": "2rem",
                         "xl": "3rem",
                         "full": "9999px"
@@ -60,129 +59,130 @@
         <aside class="w-72 bg-sidebar-dark flex flex-col h-full text-stone-200 shadow-2xl z-20">
             <div class="p-8 flex items-center gap-3">
                 <div
-                    class="size-12 bg-primary rounded-xl flex items-center justify-center border border-white/10 shadow-lg">
+                    class="size-12 bg-primary rounded flex items-center justify-center border border-white/10 shadow-lg">
                     <span class="material-symbols-outlined text-white text-3xl">coffee</span>
                 </div>
                 <div>
                     <h1 class="text-white text-2xl font-logo tracking-tight">BrewSync</h1>
-                    <p class="text-stone-500 text-[10px] uppercase tracking-widest font-bold">Cafe Operations</p>
+                    <p class="text-stone-500 text-[10px] uppercase tracking-widest font-bold">UM Matina Branch</p>
                 </div>
             </div>
             <nav class="flex-1 px-4 space-y-2 py-4 overflow-y-auto custom-scrollbar">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                <a class="flex items-center gap-3 px-4 py-3 rounded transition-all hover:bg-white/5 text-stone-400"
                     href="#">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span class="font-medium">Dashboard</span>
                 </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20"
-                    href="#">
-                    <span class="material-symbols-outlined">inventory_2</span>
-                    <span class="font-medium">Inventory</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                <a class="flex items-center gap-3 px-4 py-3 rounded transition-all hover:bg-white/5 text-stone-400"
                     href="#">
                     <span class="material-symbols-outlined">payments</span>
                     <span class="font-medium">Finance</span>
                 </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                <a class="flex items-center gap-3 px-4 py-3 rounded transition-all hover:bg-white/5 text-stone-400"
                     href="#">
-                    <span class="material-symbols-outlined">group</span>
-                    <span class="font-medium">Staff Management</span>
+                    <span class="material-symbols-outlined">sell</span>
+                    <span class="font-medium">Sales</span>
                 </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                <a class="flex items-center gap-3 px-4 py-3 rounded bg-primary text-white shadow-lg shadow-primary/20"
                     href="#">
-                    <span class="material-symbols-outlined">bar_chart</span>
-                    <span class="font-medium">Analytics</span>
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-medium">Inventory</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span class="font-medium">Peak-Hour</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">insights</span>
+                    <span class="font-medium">Insights</span>
                 </a>
             </nav>
-            <div class="p-6 border-t border-white/5">
-                <div class="bg-white/5 p-4 rounded-xl mb-4">
-                    <p class="text-[10px] uppercase font-bold text-stone-500 mb-2">System Health</p>
-                    <div class="flex items-center gap-2">
-                        <span class="size-2 rounded-full bg-green-500"></span>
-                        <span class="text-sm font-medium">Monitoring Active</span>
-                    </div>
-                </div>
-                <button
-                    class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg">
-                    <span class="material-symbols-outlined">logout</span>
-                    <span>Sign Out</span>
-                </button>
-            </div>
         </aside>
+
         <main class="flex-1 flex flex-col overflow-hidden">
             <header
                 class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10">
                 <div class="flex items-center gap-4">
-                    <h2 class="text-2xl font-bold text-sidebar-dark">Inventory &amp; Waste</h2>
+                    <h2 class="text-2xl font-bold text-sidebar-dark">Inventory & Waste</h2>
                     <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
                     <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary text-sm">inventory</span>
-                        <span class="text-sm font-bold text-stone-600">Stock Watcher</span>
+                        <span class="text-sm font-bold text-stone-600">Integrated Cafe Operations</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-6">
+                    <div class="relative hidden lg:block">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+                        <input
+                            class="pl-10 pr-4 py-2 bg-white border border-stone-200/60 rounded focus:ring-2 focus:ring-primary w-64 text-sm shadow-sm"
+                            placeholder="Search inventory items..." type="text" />
+                    </div>
                     <div class="flex items-center gap-3">
                         <button
-                            class="size-11 flex items-center justify-center rounded-xl bg-white text-stone-600 hover:bg-stone-50 transition-colors shadow-sm border border-stone-100 relative">
+                            class="size-11 flex items-center justify-center rounded bg-white text-stone-600 hover:bg-stone-50 transition-colors shadow-sm border border-stone-100">
                             <span class="material-symbols-outlined">notifications</span>
-                            <span
-                                class="absolute top-2 right-2 size-2 bg-red-600 rounded-full border-2 border-white"></span>
+                        </button>
+                        <button
+                            class="size-11 flex items-center justify-center rounded bg-white text-stone-600 hover:bg-stone-50 transition-colors shadow-sm border border-stone-100">
+                            <span class="material-symbols-outlined">settings</span>
                         </button>
                         <div class="w-[1px] h-6 bg-stone-200 mx-1"></div>
                         <div class="flex items-center gap-3 pl-2">
                             <div class="text-right">
-                                <p class="text-sm font-bold text-sidebar-dark leading-none">Admin User</p>
-                                <p class="text-[10px] text-primary uppercase font-bold mt-1">Inventory Manager</p>
+                                <p class="text-sm font-bold text-sidebar-dark leading-none">Jane Doe</p>
+                                <p class="text-[10px] text-primary uppercase font-bold mt-1">Store Manager</p>
                             </div>
-                            <div class="size-11 rounded-full border-2 border-primary/20 p-0.5">
-                                <img alt="Admin Profile" class="w-full h-full rounded-full object-cover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEOh2adSRtS0YioNuqsWbHwX9roz71UVojSHcU9nlsXkFjvWIjJSRQKH1DMfLxX_gEJc0GZPtnFO88Uw07TaHeIUT3a7qjN15GAVOtkhsXY0SiHwOs8Zvv-q7W4nVHFN9q5bWiQBjGqU83XCdjB28IHpBnpfBSZjouKDfbOkRNfhcQrgfW2GaVrtRHOj_g8kXpr6ephdQkGbzoUgEUS_eS8_SlYtMezUDzqG9ZjM6HPwOTJMYporozQTKpp-zl7KwvtABXfDLKYL6-" />
+                            <div
+                                class="size-11 rounded-full border-2 border-primary/20 p-0.5 shadow-sm overflow-hidden">
+                                <img alt="Jane Doe Profile" class="w-full h-full rounded-full object-cover"
+                                    src="profile_manager.jpg" />
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
+
             <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-red-50 border border-red-100 p-6 rounded-2xl flex items-center gap-4">
-                        <div
-                            class="size-14 rounded-2xl bg-waste-red text-white flex items-center justify-center shadow-lg">
+                    <div class="bg-red-50 border border-red-100 p-6 rounded flex items-center gap-4">
+                        <div class="size-14 rounded bg-waste-red text-white flex items-center justify-center shadow-md">
                             <span class="material-symbols-outlined text-3xl">warning</span>
                         </div>
                         <div>
                             <p class="text-waste-red text-xs font-bold uppercase tracking-wider">Critical Alerts</p>
                             <p class="text-xl font-bold text-sidebar-dark">3 Items Low Stock</p>
                         </div>
-                        <button class="ml-auto bg-waste-red text-white px-4 py-2 rounded-lg text-sm font-bold">Refill
+                        <button class="ml-auto bg-waste-red text-white px-4 py-2 rounded text-sm font-bold">Refill
                             Now</button>
                     </div>
-                    <div class="bg-primary/5 border border-primary/10 p-6 rounded-2xl flex items-center gap-4">
-                        <div
-                            class="size-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg">
+                    <div class="bg-primary/5 border border-primary/10 p-6 rounded flex items-center gap-4">
+                        <div class="size-14 rounded bg-primary text-white flex items-center justify-center shadow-md">
                             <span class="material-symbols-outlined text-3xl">event_busy</span>
                         </div>
                         <div>
                             <p class="text-primary text-xs font-bold uppercase tracking-wider">Waste Risk</p>
                             <p class="text-xl font-bold text-sidebar-dark">2 Batches Expiring Soon</p>
                         </div>
-                        <button class="ml-auto bg-sidebar-dark text-white px-4 py-2 rounded-lg text-sm font-bold">Review
+                        <button class="ml-auto bg-sidebar-dark text-white px-4 py-2 rounded text-sm font-bold">Review
                             Logs</button>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden mb-8">
+
+                <div class="bg-white rounded shadow-md border border-stone-200 overflow-hidden mb-8">
                     <div class="p-6 border-b border-stone-100 flex items-center justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-sidebar-dark uppercase tracking-tight">Ingredient &amp;
+                            <h3 class="text-xl font-bold text-sidebar-dark uppercase tracking-tight">Ingredient &
                                 Stock Watcher</h3>
                             <p class="text-sm text-stone-500">Real-time consumption vs. waste metrics</p>
                         </div>
                         <div class="flex gap-2">
                             <button
-                                class="px-4 py-2 bg-stone-100 text-stone-600 rounded-lg text-sm font-bold hover:bg-stone-200 transition-colors">Export
+                                class="px-4 py-2 bg-stone-100 text-stone-600 rounded text-sm font-bold hover:bg-stone-200 transition-colors">Export
                                 Report</button>
                             <button
-                                class="px-4 py-2 bg-sidebar-dark text-white rounded-lg text-sm font-bold hover:bg-primary transition-colors">Add
+                                class="px-4 py-2 bg-sidebar-dark text-white rounded text-sm font-bold hover:bg-primary transition-colors">Add
                                 Stock</button>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                                 <div class="flex justify-between items-end mb-3">
                                     <div class="flex items-center gap-3">
                                         <div
-                                            class="size-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center">
+                                            class="size-10 bg-blue-50 text-blue-600 rounded flex items-center justify-center">
                                             <span class="material-symbols-outlined">water_drop</span>
                                         </div>
                                         <div>
@@ -220,7 +220,7 @@
                                 <div class="flex justify-between items-end mb-3">
                                     <div class="flex items-center gap-3">
                                         <div
-                                            class="size-10 bg-stone-100 text-stone-600 rounded-lg flex items-center justify-center">
+                                            class="size-10 bg-stone-100 text-stone-600 rounded flex items-center justify-center">
                                             <span class="material-symbols-outlined">coffee</span>
                                         </div>
                                         <div>
@@ -247,7 +247,7 @@
                                 <div class="flex justify-between items-end mb-3">
                                     <div class="flex items-center gap-3">
                                         <div
-                                            class="size-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center">
+                                            class="size-10 bg-amber-50 text-amber-600 rounded flex items-center justify-center">
                                             <span class="material-symbols-outlined">liquor</span>
                                         </div>
                                         <div>
@@ -273,8 +273,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden">
+                    <div class="lg:col-span-2 bg-white rounded shadow-md border border-stone-200 overflow-hidden">
                         <div class="px-6 py-5 border-b border-stone-100 flex items-center justify-between">
                             <h4 class="text-lg font-bold text-sidebar-dark">Automated Deduction Log</h4>
                             <span class="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-full">LIVE
@@ -359,10 +360,11 @@
                                 Deductions</button>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+
+                    <div class="bg-white p-6 rounded shadow-md border border-stone-200">
                         <h4 class="text-lg font-bold text-sidebar-dark mb-4">Waste Insights</h4>
                         <div class="space-y-6">
-                            <div class="p-4 bg-red-50 rounded-xl border border-red-100">
+                            <div class="p-4 bg-red-50 rounded border border-red-100">
                                 <p class="text-[10px] font-bold text-waste-red uppercase mb-1">Top Waste Factor</p>
                                 <p class="text-sm font-bold text-sidebar-dark italic">"Milk over-steaming in morning
                                     shift"</p>
@@ -394,7 +396,7 @@
                                 </div>
                             </div>
                             <button
-                                class="w-full py-3 border-2 border-dashed border-stone-200 rounded-xl text-stone-400 text-sm font-bold hover:border-primary hover:text-primary transition-all">
+                                class="w-full py-3 border-2 border-dashed border-stone-200 rounded text-stone-400 text-sm font-bold hover:border-primary hover:text-primary transition-all">
                                 + Log Manual Waste
                             </button>
                         </div>
@@ -403,7 +405,6 @@
             </div>
         </main>
     </div>
-
 </body>
 
 </html>
