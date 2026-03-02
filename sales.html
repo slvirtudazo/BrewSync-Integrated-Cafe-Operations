@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BrewSync - Sales Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Quicksand:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5B1312",
+                        "sidebar-dark": "#2A0000",
+                        "background-light": "#F5F1E8",
+                        "background-dark": "#201212",
+                        "ivory": "#F5F1E8"
+                    },
+                    fontFamily: {
+                        "display": ["Outfit", "Quicksand", "sans-serif"],
+                        "body": ["Quicksand", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(91, 19, 18, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-72 bg-sidebar-dark flex flex-col h-full text-stone-200">
+            <div class="p-8 flex items-center gap-3">
+                <div
+                    class="size-10 bg-primary rounded-xl flex items-center justify-center border border-white/10 shadow-lg">
+                    <span class="material-symbols-outlined text-white">coffee</span>
+                </div>
+                <div>
+                    <h1 class="text-white text-xl font-bold tracking-tight">BrewSync</h1>
+                    <p class="text-stone-400 text-[10px] uppercase tracking-widest font-semibold">UM Branch Ops</p>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 py-4 overflow-y-auto custom-scrollbar">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20"
+                    href="#">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <span class="font-medium">Sales</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-medium">Inventory</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">payments</span>
+                    <span class="font-medium">Finance</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">group</span>
+                    <span class="font-medium">Staff Management</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">bar_chart</span>
+                    <span class="font-medium">Analytics</span>
+                </a>
+            </nav>
+            <div class="p-6 border-t border-white/5">
+                <div class="bg-primary/10 rounded-xl p-4 border border-primary/20">
+                    <p class="text-xs text-stone-400 mb-2">Live Recording Active</p>
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="text-sm font-bold text-white">System Synced</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <header
+                class="h-20 bg-white/50 backdrop-blur-md border-b border-stone-200 px-8 flex items-center justify-between z-10">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-2xl font-bold text-sidebar-dark">Sales Recording</h2>
+                    <span
+                        class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-wider">Live
+                        Unified Feed</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="relative hidden lg:block">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+                        <input
+                            class="pl-10 pr-4 py-2 bg-stone-100 border-none rounded-xl focus:ring-2 focus:ring-primary w-64 text-sm"
+                            placeholder="Search order ID or items..." type="text" />
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="size-10 flex items-center justify-center rounded-xl bg-stone-100 text-stone-600 hover:bg-stone-200 transition-colors">
+                            <span class="material-symbols-outlined">filter_list</span>
+                        </button>
+                        <div class="w-[1px] h-6 bg-stone-200 mx-1"></div>
+                        <div class="flex items-center gap-3 pl-2">
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-sidebar-dark leading-none">Admin User</p>
+                                <p class="text-[10px] text-stone-500 uppercase font-bold mt-1">Cashier Supervisor</p>
+                            </div>
+                            <div class="size-10 rounded-full bg-primary/10 border-2 border-primary/20 bg-cover bg-center shadow-inner"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGbGWOG3O3Ad1KXChY8aBUH8fq4m5aKusJBx5MLCOIUKoLw6HiFPB3hHCvlycal07pFig4hjAwxkAHDhYtHEJg0n03-PADDYGUEGocNL-4hWgTLqRcG_6LT2SsmivdjKwpaRnMzCIAn-jCQi-JpML2RUV4QjEn6Tct8NuEAwgM40JH6306kM6ve20kx0DnkqWsE06yIW0kVK07UjkO7nP1Zn2QhAsiaD1-v-wj5MyUzINVI5drNKub_CSwH9EV8Nmnr3fBRncjhxcu')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-1 overflow-hidden flex flex-row">
+                <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                    <div class="bg-white rounded-xl shadow-md border border-stone-100 overflow-hidden">
+                        <div class="px-8 py-6 border-b border-stone-100 flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xl font-bold text-sidebar-dark">Live Unified Sales Feed</h4>
+                                <p class="text-sm text-stone-500">Real-time recording of all store channels</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 bg-stone-50 hover:bg-stone-100 rounded-lg text-sm font-bold text-sidebar-dark border border-stone-200 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">download</span> Export
+                                </button>
+                                <button
+                                    class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-md flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">add</span> Manual Entry
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr
+                                        class="bg-stone-50 text-[11px] uppercase tracking-widest font-bold text-stone-500">
+                                        <th class="px-8 py-4">Order ID</th>
+                                        <th class="px-8 py-4">Source</th>
+                                        <th class="px-8 py-4">Items Ordered</th>
+                                        <th class="px-8 py-4">Timestamp</th>
+                                        <th class="px-8 py-4 text-right">Total Amount</th>
+                                        <th class="px-8 py-4"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-stone-100 text-sm">
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99420</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-blue-600 bg-blue-50 p-1 rounded-md text-lg">restaurant</span>
+                                                <span class="font-bold text-sidebar-dark">Dine-in</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">2x Spanish Latte, 1x Croissant</p>
+                                            <p class="text-[11px] text-stone-400">Custom: Less Ice</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">Just now</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱485.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99419</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-orange-600 bg-orange-50 p-1 rounded-md text-lg">shopping_bag</span>
+                                                <span class="font-bold text-sidebar-dark">Take-out</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">1x Iced Americano</p>
+                                            <p class="text-[11px] text-stone-400">No sugar</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">4 mins ago</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱120.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99418</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-purple-600 bg-purple-50 p-1 rounded-md text-lg">language</span>
+                                                <span class="font-bold text-sidebar-dark">Online</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">3x Cappuccino, 2x Choco Muffin</p>
+                                            <p class="text-[11px] text-stone-400">Via FoodPanda</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">12 mins ago</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱760.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99417</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-blue-600 bg-blue-50 p-1 rounded-md text-lg">restaurant</span>
+                                                <span class="font-bold text-sidebar-dark">Dine-in</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">1x Cold Brew</p>
+                                            <p class="text-[11px] text-stone-400">Table 4</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">18 mins ago</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱145.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99416</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-purple-600 bg-purple-50 p-1 rounded-md text-lg">language</span>
+                                                <span class="font-bold text-sidebar-dark">Online</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">1x Matcha Latte (L)</p>
+                                            <p class="text-[11px] text-stone-400">Via GrabFood</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">25 mins ago</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱185.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-primary/5 transition-colors">
+                                        <td class="px-8 py-4 font-medium text-stone-500">#BS-99415</td>
+                                        <td class="px-8 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-orange-600 bg-orange-50 p-1 rounded-md text-lg">shopping_bag</span>
+                                                <span class="font-bold text-sidebar-dark">Take-out</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-8 py-4">
+                                            <p class="font-bold text-sidebar-dark">4x Espresso Shot</p>
+                                            <p class="text-[11px] text-stone-400">Bulk container</p>
+                                        </td>
+                                        <td class="px-8 py-4 text-stone-500">32 mins ago</td>
+                                        <td class="px-8 py-4 text-right font-bold text-sidebar-dark">₱320.00</td>
+                                        <td class="px-8 py-4 text-right">
+                                            <button class="text-stone-400 hover:text-primary"><span
+                                                    class="material-symbols-outlined">more_vert</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="px-8 py-4 bg-stone-50 border-t border-stone-100 flex items-center justify-between">
+                            <span class="text-sm text-stone-500 font-medium">Showing last 24 hours of sales
+                                activity</span>
+                            <div class="flex gap-1">
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-lg border border-stone-200 text-stone-400 hover:bg-white"><span
+                                        class="material-symbols-outlined text-sm">chevron_left</span></button>
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold">1</button>
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-lg border border-stone-200 text-sidebar-dark text-sm font-bold hover:bg-white">2</button>
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-lg border border-stone-200 text-stone-400 hover:bg-white"><span
+                                        class="material-symbols-outlined text-sm">chevron_right</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside
+                    class="w-96 bg-ivory border-l border-stone-200 p-8 flex flex-col gap-8 overflow-y-auto custom-scrollbar">
+                    <div>
+                        <h4 class="text-xl font-bold text-sidebar-dark mb-1">Total Sales Today</h4>
+                        <p class="text-sm text-stone-500">Live channel breakdown</p>
+                        <div class="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                            <p class="text-[11px] uppercase tracking-widest font-bold text-stone-400 mb-1">Gross Revenue
+                            </p>
+                            <h3 class="text-4xl font-bold text-primary">₱18,450.25</h3>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span
+                                    class="text-green-600 bg-green-50 px-2 py-1 rounded text-xs font-bold">+15.2%</span>
+                                <span class="text-stone-400 text-xs">vs yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-sm font-bold text-sidebar-dark uppercase tracking-widest">Channel Performance
+                        </h5>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl border border-stone-100">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-blue-600 bg-blue-50 p-2 rounded-lg">restaurant</span>
+                                        <div>
+                                            <p class="text-sm font-bold text-sidebar-dark leading-none">Dine-in</p>
+                                            <p class="text-[10px] text-stone-400 font-bold uppercase mt-1">42 Orders</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg font-bold text-sidebar-dark">₱8,240</p>
+                                </div>
+                                <div class="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-blue-600 h-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-stone-100">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-orange-600 bg-orange-50 p-2 rounded-lg">shopping_bag</span>
+                                        <div>
+                                            <p class="text-sm font-bold text-sidebar-dark leading-none">Take-out</p>
+                                            <p class="text-[10px] text-stone-400 font-bold uppercase mt-1">28 Orders</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg font-bold text-sidebar-dark">₱5,120</p>
+                                </div>
+                                <div class="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-orange-600 h-full" style="width: 28%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-stone-100">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="material-symbols-outlined text-purple-600 bg-purple-50 p-2 rounded-lg">language</span>
+                                        <div>
+                                            <p class="text-sm font-bold text-sidebar-dark leading-none">Online</p>
+                                            <p class="text-[10px] text-stone-400 font-bold uppercase mt-1">24 Orders</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg font-bold text-sidebar-dark">₱5,090</p>
+                                </div>
+                                <div class="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-purple-600 h-full" style="width: 27%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="p-6 bg-sidebar-dark rounded-2xl text-white relative overflow-hidden">
+                            <div class="relative z-10">
+                                <h6 class="text-sm font-bold mb-2">Need a detailed report?</h6>
+                                <p class="text-xs text-stone-400 mb-4">Generate custom CSV or PDF reports for today's
+                                    centralized sales.</p>
+                                <button
+                                    class="w-full py-3 bg-primary rounded-xl text-sm font-bold hover:bg-primary/90 transition-all">Generate
+                                    Report</button>
+                            </div>
+                            <span
+                                class="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl opacity-10">analytics</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

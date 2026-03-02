@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BrewSync - Service Operations</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5B1312",
+                        "sidebar-dark": "#2A0000",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#201212",
+                        "botanical-leaf": "#4A5D4E",
+                    },
+                    fontFamily: {
+                        "display": ["DM Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'DM Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            @apply bg-primary/20 rounded-full;
+        }
+        .glass-panel {
+            @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-md;
+        }
+        .heat-cell {
+            @apply w-full h-8 rounded-sm;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-72 bg-sidebar-dark flex flex-col h-full text-stone-200">
+            <div class="p-8 flex items-center gap-3">
+                <div
+                    class="size-10 bg-primary rounded-xl flex items-center justify-center border border-white/10 shadow-lg">
+                    <span class="material-symbols-outlined text-white">eco</span>
+                </div>
+                <div>
+                    <h1 class="text-white text-xl font-bold tracking-tight">BrewSync</h1>
+                    <p class="text-stone-400 text-[10px] uppercase tracking-widest font-semibold">Service &amp; Insights
+                    </p>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 py-4 overflow-y-auto custom-scrollbar">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-medium">Operations</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20"
+                    href="#">
+                    <span class="material-symbols-outlined">bolt</span>
+                    <span class="font-medium">Peak-Hour Live</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <span class="font-medium">Insights</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">restaurant_menu</span>
+                    <span class="font-medium">Menu Manager</span>
+                </a>
+                <div class="pt-4 pb-2 px-4 text-[10px] font-bold text-stone-500 uppercase tracking-widest">
+                    Administrative</div>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">payments</span>
+                    <span class="font-medium">Finance</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-medium">Settings</span>
+                </a>
+            </nav>
+            <div class="p-6 mt-auto">
+                <div class="bg-primary/10 rounded-2xl p-4 border border-primary/20">
+                    <div class="flex items-center gap-2 mb-2 text-primary">
+                        <span class="material-symbols-outlined text-sm">info</span>
+                        <span class="text-xs font-bold uppercase tracking-tight">UM Branch Peak</span>
+                    </div>
+                    <p class="text-[11px] text-stone-400 leading-relaxed">System predicting high volume between 1:00 PM
+                        - 3:00 PM today.</p>
+                </div>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <header
+                class="h-20 bg-white/60 backdrop-blur-md border-b border-stone-200 px-8 flex items-center justify-between z-10">
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-xl font-bold text-sidebar-dark">UM Branch Portal</h2>
+                        <span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                    </div>
+                    <div class="flex bg-stone-100 p-1 rounded-xl">
+                        <button class="px-4 py-1.5 bg-white shadow-sm rounded-lg text-sm font-bold text-primary">Live
+                            Queue</button>
+                        <button
+                            class="px-4 py-1.5 text-stone-500 text-sm font-medium hover:text-primary">Performance</button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 px-4 py-2 bg-stone-50 rounded-full border border-stone-200">
+                        <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">QR Menu</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input checked="" class="sr-only peer" type="checkbox" />
+                            <div
+                                class="w-9 h-5 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="w-[1px] h-6 bg-stone-200 mx-2"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-sidebar-dark leading-none">Shift Supervisor</p>
+                            <p class="text-[10px] text-primary uppercase font-bold mt-1">On-Duty</p>
+                        </div>
+                        <div class="size-10 rounded-full bg-primary/10 border-2 border-primary/20 bg-cover bg-center"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUzSUDKd1RaF92kOnXjNfaK_igCrj6DGAkOYWtShtVlAkpG4PsJqd8VyBv6KJge2zQb2ynrzuwmj2e92NcU0E1KHYMxM5hM9L8LKkDuXtKlyGDFUTAnyIllYDO4gF2pk9KW9VfwQ8JgbqMsRb6OEifd_d63J5UTACN4sxLFPV2u4kn9LiISm2VZlw-3xn9jGPQY3vYJG0LVk2yXyAnSl9hbUgDZp1nVW4RStm3t5bynE4Le_Zyf96hPNWkSKVnEduR67WIhBOVu4nX')">
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-12 xl:col-span-8 flex flex-col gap-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-sidebar-dark flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">pending_actions</span>
+                                Live Service Queue
+                            </h3>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-stone-100 rounded-lg text-xs font-bold text-stone-500">Auto-Refresh:
+                                    5s</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 h-[600px]">
+                            <div
+                                class="bg-stone-100/50 rounded-2xl border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                <div class="flex items-center justify-between mb-4 px-2">
+                                    <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Pending
+                                        (4)</span>
+                                    <span class="size-2 rounded-full bg-amber-400"></span>
+                                </div>
+                                <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
+                                    <div class="glass-panel p-4 rounded-xl border-l-4 border-amber-400">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2930</h4>
+                                            <span class="text-[10px] font-bold text-stone-400">3 min ago</span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3">1x Caramel Macchiato, 1x Glazed Donut</p>
+                                        <button
+                                            class="w-full py-2 bg-primary/10 hover:bg-primary/20 text-primary text-[10px] font-bold rounded-lg transition-colors">START
+                                            PREPARING</button>
+                                    </div>
+                                    <div class="glass-panel p-4 rounded-xl border-l-4 border-amber-400">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2932</h4>
+                                            <span class="text-[10px] font-bold text-stone-400">5 min ago</span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3">2x Espresso Shot, 1x Tuna Sandwich</p>
+                                        <button
+                                            class="w-full py-2 bg-primary/10 hover:bg-primary/20 text-primary text-[10px] font-bold rounded-lg transition-colors">START
+                                            PREPARING</button>
+                                    </div>
+                                    <div class="glass-panel p-4 rounded-xl border-l-4 border-amber-400 opacity-60">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2933</h4>
+                                            <span class="text-[10px] font-bold text-stone-400">8 min ago</span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3">1x Matcha Latte (Cold)</p>
+                                        <button
+                                            class="w-full py-2 bg-primary/10 hover:bg-primary/20 text-primary text-[10px] font-bold rounded-lg transition-colors">START
+                                            PREPARING</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-stone-100/50 rounded-2xl border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                <div class="flex items-center justify-between mb-4 px-2">
+                                    <span class="text-xs font-bold uppercase tracking-widest text-stone-500">In-Progress
+                                        (2)</span>
+                                    <span class="size-2 rounded-full bg-blue-400"></span>
+                                </div>
+                                <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
+                                    <div
+                                        class="glass-panel p-4 rounded-xl border-l-4 border-blue-400 ring-1 ring-primary/10">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2928</h4>
+                                            <span class="text-[10px] font-bold text-blue-600 flex items-center gap-1">
+                                                <span
+                                                    class="material-symbols-outlined text-[12px] animate-spin">progress_activity</span>
+                                                4:12
+                                            </span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3 font-medium text-primary italic">Barista:
+                                            Mark</p>
+                                        <p class="text-xs text-stone-600 mb-3">3x Cappuccino (Large)</p>
+                                        <button
+                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded-lg shadow-sm">MARK
+                                            AS READY</button>
+                                    </div>
+                                    <div class="glass-panel p-4 rounded-xl border-l-4 border-blue-400">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2929</h4>
+                                            <span class="text-[10px] font-bold text-blue-600 flex items-center gap-1">
+                                                <span
+                                                    class="material-symbols-outlined text-[12px] animate-spin">progress_activity</span>
+                                                2:45
+                                            </span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3 font-medium text-primary italic">Barista:
+                                            Ana</p>
+                                        <p class="text-xs text-stone-600 mb-3">1x Dark Mocha Frappe</p>
+                                        <button
+                                            class="w-full py-2 bg-primary text-white text-[10px] font-bold rounded-lg shadow-sm">MARK
+                                            AS READY</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-stone-100/50 rounded-2xl border border-stone-200/60 p-4 flex flex-col overflow-hidden">
+                                <div class="flex items-center justify-between mb-4 px-2">
+                                    <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Ready
+                                        (3)</span>
+                                    <span class="size-2 rounded-full bg-green-400"></span>
+                                </div>
+                                <div class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
+                                    <div class="glass-panel p-4 rounded-xl border-l-4 border-green-400 bg-green-50/30">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-bold text-sidebar-dark text-sm">#ORD-2925</h4>
+                                            <span
+                                                class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded-full">PICKUP</span>
+                                        </div>
+                                        <p class="text-xs text-stone-600 mb-3 font-bold">Customer: Juan D.</p>
+                                        <button
+                                            class="w-full py-2 bg-sidebar-dark text-white text-[10px] font-bold rounded-lg">COMPLETE
+                                            TRANSACTION</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 xl:col-span-4 flex flex-col gap-6">
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div>
+                                    <h4 class="font-bold text-sidebar-dark">Peak Hours</h4>
+                                    <p class="text-[10px] text-stone-500 uppercase font-bold">UM Branch - Weekly Traffic
+                                    </p>
+                                </div>
+                                <span class="material-symbols-outlined text-primary/40">calendar_month</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="grid grid-cols-7 gap-1 text-center">
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase">Mon</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase">Tue</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase">Wed</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase">Thu</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase">Fri</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase text-primary">Sat</span>
+                                    <span class="text-[9px] font-bold text-stone-400 uppercase text-primary">Sun</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-8 text-[8px] font-bold text-stone-400">8AM</span>
+                                        <div class="flex-1 grid grid-cols-7 gap-1">
+                                            <div class="heat-cell bg-primary/10"></div>
+                                            <div class="heat-cell bg-primary/20"></div>
+                                            <div class="heat-cell bg-primary/10"></div>
+                                            <div class="heat-cell bg-primary/20"></div>
+                                            <div class="heat-cell bg-primary/30"></div>
+                                            <div class="heat-cell bg-primary/50"></div>
+                                            <div class="heat-cell bg-primary/40"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-8 text-[8px] font-bold text-stone-400">1PM</span>
+                                        <div class="flex-1 grid grid-cols-7 gap-1">
+                                            <div class="heat-cell bg-primary/40"></div>
+                                            <div class="heat-cell bg-primary/50"></div>
+                                            <div class="heat-cell bg-primary/60"></div>
+                                            <div class="heat-cell bg-primary/70"></div>
+                                            <div class="heat-cell bg-primary/90"></div>
+                                            <div class="heat-cell bg-primary/100 shadow-sm border border-white/20">
+                                            </div>
+                                            <div class="heat-cell bg-primary/80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-8 text-[8px] font-bold text-stone-400">6PM</span>
+                                        <div class="flex-1 grid grid-cols-7 gap-1">
+                                            <div class="heat-cell bg-primary/20"></div>
+                                            <div class="heat-cell bg-primary/30"></div>
+                                            <div class="heat-cell bg-primary/20"></div>
+                                            <div class="heat-cell bg-primary/30"></div>
+                                            <div class="heat-cell bg-primary/40"></div>
+                                            <div class="heat-cell bg-primary/60"></div>
+                                            <div class="heat-cell bg-primary/50"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center mt-4">
+                                    <span class="text-[9px] text-stone-400 font-medium">Low Volume</span>
+                                    <div class="flex gap-0.5">
+                                        <div class="size-2 bg-primary/10"></div>
+                                        <div class="size-2 bg-primary/40"></div>
+                                        <div class="size-2 bg-primary/70"></div>
+                                        <div class="size-2 bg-primary/100"></div>
+                                    </div>
+                                    <span class="text-[9px] text-stone-400 font-medium">Critical Peak</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl flex-1">
+                            <div class="flex items-center justify-between mb-6">
+                                <h4 class="font-bold text-sidebar-dark">Top Performance</h4>
+                                <select
+                                    class="text-[10px] font-bold bg-transparent border-none focus:ring-0 p-0 text-primary">
+                                    <option>Today</option>
+                                    <option>This Week</option>
+                                </select>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1">
+                                        <span class="font-bold text-stone-600">Spanish Latte</span>
+                                        <span class="font-bold text-primary">84 Units</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1">
+                                        <span class="font-bold text-stone-600">Iced Americano</span>
+                                        <span class="font-bold text-primary">62 Units</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary/70 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1">
+                                        <span class="font-bold text-stone-600">Dark Choco Chip</span>
+                                        <span class="font-bold text-primary">45 Units</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary/50 rounded-full" style="width: 48%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] mb-1">
+                                        <span class="font-bold text-stone-600">Cheese Ensaymada</span>
+                                        <span class="font-bold text-primary">38 Units</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary/30 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-stone-100">
+                                <div class="bg-botanical-leaf/5 p-4 rounded-xl flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-botanical-leaf">psychology</span>
+                                    <p class="text-[11px] text-botanical-leaf/80 leading-snug">
+                                        <strong class="text-botanical-leaf block mb-0.5">Insight Note:</strong>
+                                        Bundling Spanish Latte with Cheese Ensaymada could increase ticket size by 15%
+                                        during morning peaks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

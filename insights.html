@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BrewSync - Customer Analytics</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5B1312",
+                        "sidebar-dark": "#2A0000",
+                        "background-light": "#F5F1E8",
+                        "background-dark": "#201212",
+                        "accent-burgundy": "#5B1312",
+                        "neutral-coffee": "#8B7E74",
+                    },
+                    fontFamily: {
+                        "display": ["Outfit", "sans-serif"],
+                        "logo": ["Oleo Script", "cursive"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.25rem", // 20px
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display text-slate-900 bg-background-light dark:bg-background-dark antialiased;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(91, 19, 18, 0.2);
+            border-radius: 10px;
+        }
+        .heatmap-cell {
+            @apply rounded-sm transition-all duration-300 hover:scale-110 cursor-pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-72 bg-sidebar-dark flex flex-col h-full text-stone-200 shadow-2xl z-20">
+            <div class="p-8 flex items-center gap-3">
+                <div
+                    class="size-12 bg-primary rounded-xl flex items-center justify-center border border-white/10 shadow-lg">
+                    <span class="material-symbols-outlined text-white text-3xl">coffee</span>
+                </div>
+                <div>
+                    <h1 class="text-white text-2xl font-logo tracking-tight">BrewSync</h1>
+                    <p class="text-stone-500 text-[10px] uppercase tracking-widest font-bold">UM Campus Analytics</p>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 py-4 overflow-y-auto custom-scrollbar">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-medium">Inventory</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">payments</span>
+                    <span class="font-medium">Finance</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20"
+                    href="#">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="font-medium">Insights</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-stone-400"
+                    href="#">
+                    <span class="material-symbols-outlined">group</span>
+                    <span class="font-medium">Staff Management</span>
+                </a>
+            </nav>
+            <div class="p-6 border-t border-white/5">
+                <div class="bg-white/5 p-4 rounded-xl mb-4">
+                    <p class="text-[10px] uppercase font-bold text-stone-500 mb-2 font-display">Data Sync Status</p>
+                    <div class="flex items-center gap-2 font-display">
+                        <span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-sm font-medium">Real-time Tracking</span>
+                    </div>
+                </div>
+                <button
+                    class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg font-display">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <header
+                class="h-20 bg-white/40 backdrop-blur-md border-b border-stone-200/60 px-8 flex items-center justify-between z-10">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-2xl font-bold text-sidebar-dark">Customer Behavior Analytics</h2>
+                    <div class="h-6 w-[1px] bg-stone-300 mx-2"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">school</span>
+                        <span class="text-sm font-bold text-stone-600">UM Campus Region</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-full">
+                            <span class="material-symbols-outlined text-primary text-sm">calendar_month</span>
+                            <span class="text-sm font-bold text-primary">Academic Semester 1</span>
+                        </div>
+                        <div class="w-[1px] h-6 bg-stone-200 mx-1"></div>
+                        <div class="flex items-center gap-3 pl-2">
+                            <div class="text-right font-display">
+                                <p class="text-sm font-bold text-sidebar-dark leading-none">Admin User</p>
+                                <p class="text-[10px] text-primary uppercase font-bold mt-1">Insight Manager</p>
+                            </div>
+                            <div class="size-11 rounded-full border-2 border-primary/20 p-0.5 shadow-sm">
+                                <img alt="Admin Profile" class="w-full h-full rounded-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEOh2adSRtS0YioNuqsWbHwX9roz71UVojSHcU9nlsXkFjvWIjJSRQKH1DMfLxX_gEJc0GZPtnFO88Uw07TaHeIUT3a7qjN15GAVOtkhsXY0SiHwOs8Zvv-q7W4nVHFN9q5bWiQBjGqU83XCdjB28IHpBnpfBSZjouKDfbOkRNfhcQrgfW2GaVrtRHOj_g8kXpr6ephdQkGbzoUgEUS_eS8_SlYtMezUDzqG9ZjM6HPwOTJMYporozQTKpp-zl7KwvtABXfDLKYL6-" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                <div class="bg-white p-8 rounded-2xl shadow-md border border-stone-100 mb-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-sidebar-dark">Peak Hour Heatmap: Student Activity</h3>
+                            <p class="text-sm text-stone-500">Correlation between UM class schedules and store traffic
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-1">
+                                <span class="size-3 bg-primary/10 rounded-sm"></span>
+                                <span class="text-[10px] font-bold text-stone-400">Low</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="size-3 bg-primary/60 rounded-sm"></span>
+                                <span class="text-[10px] font-bold text-stone-400">Mid</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="size-3 bg-primary rounded-sm"></span>
+                                <span class="text-[10px] font-bold text-stone-400">Peak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <div class="min-w-[800px]">
+                            <div class="grid grid-cols-[80px_repeat(14,1fr)] gap-2">
+                                <div></div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">08:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">09:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">10:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">11:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">12:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">13:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">14:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">15:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">16:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">17:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">18:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">19:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">20:00</div>
+                                <div class="text-[10px] font-bold text-stone-400 text-center uppercase">21:00</div>
+                                <div class="text-xs font-bold text-sidebar-dark flex items-center">MON</div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/40 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/80 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/60 heatmap-cell"></div>
+                                <div class="h-8 bg-primary heatmap-cell"></div>
+                                <div class="h-8 bg-primary/90 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/40 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/60 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/80 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/40 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="text-xs font-bold text-sidebar-dark flex items-center">TUE</div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/30 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/60 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/90 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/80 heatmap-cell"></div>
+                                <div class="h-8 bg-primary heatmap-cell"></div>
+                                <div class="h-8 bg-primary/60 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/40 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/30 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/50 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/30 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="text-xs font-bold text-sidebar-dark flex items-center">WED</div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/50 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/80 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/70 heatmap-cell"></div>
+                                <div class="h-8 bg-primary heatmap-cell"></div>
+                                <div class="h-8 bg-primary/90 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/50 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/30 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/60 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/80 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/40 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/20 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                                <div class="h-8 bg-primary/10 heatmap-cell"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-stone-100">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-sidebar-dark">Most Popular Pairings</h4>
+                                <p class="text-sm text-stone-500">Student favorites and bundles</p>
+                            </div>
+                            <button
+                                class="size-10 rounded-full hover:bg-stone-50 transition-colors flex items-center justify-center border border-stone-100 text-stone-400">
+                                <span class="material-symbols-outlined">more_vert</span>
+                            </button>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-bold text-sidebar-dark">Spanish Latte &amp; Red Velvet
+                                        Cookie</span>
+                                    <span class="text-xs font-bold text-primary">82 Pairs</span>
+                                </div>
+                                <div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-bold text-sidebar-dark">Iced Americano &amp; Dark Choco
+                                        Cookie</span>
+                                    <span class="text-xs font-bold text-primary">64 Pairs</span>
+                                </div>
+                                <div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-full rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-bold text-sidebar-dark">Caramel Macchiato &amp; Glazed
+                                        Donut</span>
+                                    <span class="text-xs font-bold text-primary">58 Pairs</span>
+                                </div>
+                                <div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-full rounded-full" style="width: 55%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-bold text-sidebar-dark">Matcha Latte &amp; Tuna
+                                        Sandwich</span>
+                                    <span class="text-xs font-bold text-primary">42 Pairs</span>
+                                </div>
+                                <div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-full rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-stone-100">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h4 class="text-lg font-bold text-sidebar-dark">Loyalty Retention Trend</h4>
+                                <p class="text-sm text-stone-500">UM Student loyalty program growth</p>
+                            </div>
+                            <div
+                                class="bg-green-50 text-green-600 text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">trending_up</span>
+                                +12%
+                            </div>
+                        </div>
+                        <div class="h-56 w-full relative">
+                            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 300">
+                                <defs>
+                                    <linearGradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(91, 19, 18, 0.1);stop-opacity:1">
+                                        </stop>
+                                        <stop offset="100%" style="stop-color:rgba(91, 19, 18, 0);stop-opacity:1">
+                                        </stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0,250 Q100,220 200,230 T400,160 T600,140 T800,80 T1000,60 L1000,300 L0,300 Z"
+                                    fill="url(#grad)"></path>
+                                <path d="M0,250 Q100,220 200,230 T400,160 T600,140 T800,80 T1000,60" fill="none"
+                                    stroke="#5B1312" stroke-linecap="round" stroke-width="4"></path>
+                                <circle cx="200" cy="230" fill="white" r="5" stroke="#5B1312" stroke-width="2"></circle>
+                                <circle cx="400" cy="160" fill="white" r="5" stroke="#5B1312" stroke-width="2"></circle>
+                                <circle cx="600" cy="140" fill="white" r="5" stroke="#5B1312" stroke-width="2"></circle>
+                                <circle cx="800" cy="80" fill="white" r="5" stroke="#5B1312" stroke-width="2"></circle>
+                                <line stroke="#f1f1f1" stroke-width="1" x1="0" x2="1000" y1="100" y2="100"></line>
+                                <line stroke="#f1f1f1" stroke-width="1" x1="0" x2="1000" y1="200" y2="200"></line>
+                            </svg>
+                            <div
+                                class="flex justify-between mt-6 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
+                                <span>AUG</span>
+                                <span>SEP</span>
+                                <span>OCT</span>
+                                <span>NOV</span>
+                                <span>DEC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-primary p-6 rounded-2xl shadow-xl text-white">
+                        <span class="material-symbols-outlined text-4xl mb-4">tips_and_updates</span>
+                        <h5 class="text-lg font-bold mb-2">Operational Tip</h5>
+                        <p class="text-white/80 text-sm mb-4">Increase staff count during 12:00 PM - 1:30 PM (UM Lunch
+                            Break) to reduce wait times.</p>
+                        <button
+                            class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-xs font-bold transition-all">Schedule
+                            Adjustment</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-stone-100">
+                        <div
+                            class="size-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined">campaign</span>
+                        </div>
+                        <h5 class="text-lg font-bold text-sidebar-dark mb-2">Targeted Promo</h5>
+                        <p class="text-stone-500 text-sm mb-4">Promote the "UM Student Duo" bundle on Wednesday
+                            afternoons to boost lagging traffic.</p>
+                        <button class="text-primary font-bold text-xs hover:underline flex items-center gap-1">Launch
+                            Campaign <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-stone-100">
+                        <div class="size-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined">loyalty</span>
+                        </div>
+                        <h5 class="text-lg font-bold text-sidebar-dark mb-2">Member Milestone</h5>
+                        <p class="text-stone-500 text-sm mb-4">150+ new student loyalty members joined this week. Review
+                            reward tiers.</p>
+                        <button class="text-primary font-bold text-xs hover:underline flex items-center gap-1">Manage
+                            Rewards <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
