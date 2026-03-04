@@ -1,0 +1,16 @@
+/* Slightly tint the finance panel cards to visually separate them from other tabs */
+#finance .panel-card {
+  background: radial-gradient(circle at top left, #243054, #121728);
+  border-color: #32406a;
+}
+
+/* Color key finance values with a calm accent to suggest stability */
+#finance .card-value {
+  color: #6ee7b7;
+}
+
+/* Adjust finance panel title spacing for comfortable reading */
+#finance .panel-title {
+  letter-spacing: 0.02em;
+}
+

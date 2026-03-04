@@ -1,0 +1,17 @@
+/* Give insights cards a balanced gradient to suggest strategic overview */
+#insights .panel-card {
+  background: radial-gradient(circle at top left, #233547, #101722);
+  border-color: #32485f;
+}
+
+/* Color insight titles to separate them from raw metrics in other tabs */
+#insights .card-title {
+  color: #e5e7eb;
+  text-transform: none;
+}
+
+/* Make insight notes slightly larger for easier reading of recommendations */
+#insights .card-note {
+  font-size: 0.85rem;
+}
+
