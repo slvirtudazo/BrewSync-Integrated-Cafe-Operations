@@ -1,0 +1,79 @@
+/* Base */
+body {
+    font-family: "DM Sans", sans-serif;
+    color: rgb(15 23 42);
+    /* slate-900 */
+    background-color: #F9F8F6;
+    /* background-light */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Customer Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(91, 19, 18, 0.2);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(91, 19, 18, 0.4);
+}
+
+/* Sidebar Background */
+.sidebar-bg {
+    background-image:
+        linear-gradient(rgba(42, 0, 0, 0.85), rgba(42, 0, 0, 0.85)),
+        url('https://i.pinimg.com/736x/10/86/14/108614008a12928220759c5d083c2afb.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Reusable Card */
+.glass-panel {
+    background-color: #ffffff;
+    border-radius: 1.25rem;
+    border: 1px solid rgb(245 245 244);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Heatmap Cells */
+.heatmap-cell {
+    border-radius: 0.125rem;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.1);
+}
+
+.heat-cell {
+    width: 100%;
+    height: 2rem;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.heat-cell:hover {
+    transform: scale(1.05);
+}
+
+/* Page Router */
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: flex;
+}
